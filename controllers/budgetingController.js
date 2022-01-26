@@ -26,9 +26,9 @@ budgetRoutes.put("/:index", (req, res) => {
         res.status(422).json({error: "Not found!"});
         return;
     };
-    const { date, name, amount, from } = req.body;
-    if(date & name && amount && from ) {
-        budgetArr[index] = {date, name, amount, from};
+    const { date, name, amount, from, category } = req.body;
+    if(date && name && amount && from && category) {
+        budgetArr[index] = {date, name, amount, from, category};
         res.json(budgetArr[index]);
     } else {
         res.status(422).json({
@@ -36,6 +36,8 @@ budgetRoutes.put("/:index", (req, res) => {
         })
     }
 });
+
+
 
 budgetRoutes.delete("/:index", (req, res) => {
     const { index } = req.params;
